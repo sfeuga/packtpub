@@ -1,0 +1,33 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.1.1)
+    date (3.3.3)
+    faraday (2.7.11)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
+    nokogiri (1.15.4-arm64-darwin)
+      racc (~> 1.4)
+    open-uri (0.3.0)
+      stringio
+      time
+      uri
+    racc (1.7.1)
+    ruby2_keywords (0.0.5)
+    stringio (3.0.8)
+    time (0.2.2)
+      date
+    uri (0.12.2)
+
+PLATFORMS
+  arm64-darwin-22
+
+DEPENDENCIES
+  faraday
+  nokogiri
+  open-uri
+
+BUNDLED WITH
+   2.4.19
