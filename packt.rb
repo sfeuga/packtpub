@@ -27,7 +27,7 @@ unless token.nil?
   puts cover_url
   puts title
 
-  unless rating.nil? && rating.first.nil?
+  unless rating.first.nil?
     rating = "Rating: #{rating.first}/5 #{rating.last}\n"
   else
     rating = ""
