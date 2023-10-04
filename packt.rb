@@ -27,6 +27,12 @@ unless token.nil?
   puts cover_url
   puts title
 
+  unless rating.first.nil?
+    rating = "Rating: #{rating.first}/5 #{rating.last}\n"
+  else
+    rating = ""
+  end
+
   message = {
     "blocks": [
       {
@@ -41,7 +47,7 @@ unless token.nil?
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "#{author}\n#{summary}\n#{publication_date}, #{pages}\nRating: #{rating.first}/5 #{rating.last}\n<#{packt_url}|Read the ebook...>"
+          "text": "#{author}\n#{summary}\n#{publication_date}, #{pages}\n#{rating}<#{packt_url}|Read the ebook...>"
         },
         "accessory": {
           "type": "image",
