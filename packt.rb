@@ -16,19 +16,19 @@ unless token.nil?
 
   ebook = free_daily_ebook.css('div.product__info div.grid.product-info.main-product')
 
-  author = ebook.css('span.product-info__author.free_learning__author').text.delete!("\r\n\\")
+  author = ebook.css('span.product-info__author.free_learning__author').text.delete!("\r\n\\").squeeze(' ').strip
   cover_url = ebook.css("img.product-image").attr('src').to_s
-  pages = ebook.css('div.free_learning__product_pages').text.delete!("\r\n\\")
-  publication_date = ebook.css('div.free_learning__product_pages_date').text.delete!("\r\n\\")
+  pages = ebook.css('div.free_learning__product_pages').text.delete!("\r\n\\").squeeze(' ').strip
+  publication_date = ebook.css('div.free_learning__product_pages_date').text.delete!("\r\n\\").squeeze(' ').strip
   rating = ebook.css('div.product-info__rating span').map(&:text)
-  summary = ebook.css('div.free_learning__product_description').text.delete!("\r\n\\")
-  title = ebook.css('h3.product-info__title').text
+  summary = ebook.css('div.free_learning__product_description').text.delete!("\r\n\\").squeeze(' ').strip
+  title = ebook.css('h3.product-info__title').text.squeeze(' ').strip
 
   puts cover_url
   puts title
 
   unless rating.first.nil?
-    rating = "Rating: #{rating.first}/5 #{rating.last}\n"
+    rating = "Rating: #{rating.first.squeeze(' ').strip}/5 #{rating.last.squeeze(' ').strip}\n"
   else
     rating = ""
   end
