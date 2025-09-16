@@ -16,13 +16,24 @@ unless token.nil?
 
   ebook = free_daily_ebook.css('div.product__info div.grid.product-info.main-product')
 
-  author = ebook.css('span.product-info__author.free_learning__author').text.delete!("\r\n\\").squeeze(' ').strip
+  author = ebook.css('span.product-info__author.free_learning__author').text.delete!("\r\n\\").squeeze(' ')
+  author = author.squeeze(' ').strip unless author == nil
+
   cover_url = ebook.css("img.product-image").attr('src').to_s
-  pages = ebook.css('div.free_learning__product_pages').text.delete!("\r\n\\").squeeze(' ').strip
-  publication_date = ebook.css('div.free_learning__product_pages_date').text.delete!("\r\n\\").squeeze(' ').strip
+
+  pages = ebook.css('div.free_learning__product_pages').text.delete!("\r\n\\").squeeze(' ')
+  pages = pages.squeeze(' ').strip unless pages == nil
+
+  publication_date = ebook.css('div.free_learning__product_pages_date').text.delete!("\r\n\\").squeeze(' ')
+  publication_date = publication_date.squeeze(' ').strip unless publication_date == nil
+
   rating = ebook.css('div.product-info__rating span').map(&:text)
-  summary = ebook.css('div.free_learning__product_description').text.delete!("\r\n\\").squeeze(' ').strip
-  title = ebook.css('h3.product-info__title').text.squeeze(' ').strip
+
+  summary = ebook.css('div.free_learning__product_description').text.delete!("\r\n\\").squeeze(' ')
+  summary = summary.squeeze(' ').strip unless summary == nil
+
+  title = ebook.css('h3.product-info__title').text.squeeze(' ')
+  title = title.squeeze(' ').strip unless title == nil
 
   puts cover_url
   puts title
